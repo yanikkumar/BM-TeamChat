@@ -16,7 +16,7 @@ class Register extends React.Component {
         usersRef: firebase.database().ref('users')
     };
 
-    isformValid = () => {
+    isFormValid = () => {
         let errors = [];
         let error;
 
@@ -60,7 +60,7 @@ class Register extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        if(this.isformValid()){
+        if(this.isFormValid()){
         this.setState({errors: [], loading:true});
         firebase
             .auth()
@@ -114,7 +114,7 @@ class Register extends React.Component {
         return(
             <Grid textAlign="center" verticalAlign="middle" className="app">
                 <Grid.Column style={{maxWidth: 450}}>
-                    <Header as="h2" icon color="black" textAlign="center">
+                    <Header as="h1" icon color="black" textAlign="center">
                         <Icon name="code" color="black"/>
                         Register For BM-TeamChat
                     </Header>
