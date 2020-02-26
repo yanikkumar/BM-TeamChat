@@ -27,7 +27,7 @@ const initialChannelState = {
     currentChannel: null
 };
 
-const channel_reducer = (stage = initialChannelState, action) => {
+const channel_reducer = (state = initialChannelState, action) => {
     switch(action.type){
         case actionTypes.SET_CURRENT_CHANNEL:
             return{
