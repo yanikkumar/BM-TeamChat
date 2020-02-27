@@ -11,7 +11,7 @@ class MessageForm extends React.Component {
         storageRef: firebase.storage().ref(),
         uploadTask: null,
         uploadState: '',
-        percentUploded: 0,
+        percentUploaded: 0,
         message: '',
         channel: this.props.currentChannel,
         user: this.props.currentUser,
@@ -85,8 +85,9 @@ class MessageForm extends React.Component {
         },
             () => {
                 this.state.uploadTask.on('state_changed', snap => {
-                    const percentUploded = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
-                    this.setState({ percentUploded });
+                    const percentUploaded = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+                    this.props.isProgressBarVisible(percentUploaded);
+                    this.setState({ percentUploaded });
                 },
                 err => {
                     console.error(err);
@@ -130,7 +131,7 @@ class MessageForm extends React.Component {
     }
 
     render() {
-        const {errors, message, loading, modal, uploadState, percentUploded} = this.state;
+        const {errors, message, loading, modal, uploadState, percentUploaded} = this.state;
 
         return(
             <Segment className="message__form">
@@ -172,7 +173,7 @@ class MessageForm extends React.Component {
                     />
                     <ProgressBar 
                         uploadState={uploadState}
-                        percentUploded={percentUploded}
+                        percentUploaded={percentUploaded}
                     />
             </Segment>
         )

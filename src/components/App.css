@@ -8,8 +8,18 @@ body,
 
 /* Messages.js */
 
-.messages {
+/* .messages {
     height: 400px;
+    overflow-y: scroll;
+} */
+
+.messages {
+    height: 58vh;
+    overflow-y: scroll;
+}
+
+.messages__progress {
+    height: 50vh;
     overflow-y: scroll;
 }
 
