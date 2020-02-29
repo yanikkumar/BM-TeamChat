@@ -19,7 +19,7 @@ body,
 }
 
 .messages__progress {
-    height: 50vh;
+    height: 54vh;
     overflow-y: scroll;
 }
 
