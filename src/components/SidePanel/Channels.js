@@ -55,7 +55,7 @@ class Channels extends React.Component{
             if(channelId !== currentChannelId) {
                 lastTotal = notifications[index].total;
 
-                if(snap.numChildrenI() - lastTotal > 0) {
+                if(snap.numChildren() - lastTotal > 0) {
                     notifications[index].count = snap.numChildren() - lastTotal;
                 }
             }
