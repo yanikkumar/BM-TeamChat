@@ -21,6 +21,14 @@ class ColorPanel extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.removeListner();
+    }
+
+    removeListner = () => {
+        this.state.usersRef.child(`${this.state.user.uid}/colors`).off();
+    }
+
     addListner = userId => {
         let userColors = [];
         this.state.usersRef

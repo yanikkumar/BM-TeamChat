@@ -20,6 +20,16 @@ class DierctMessages extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.removeListeners();
+    }
+
+    removeListeners = () => {
+        this.state.usersRef.off();
+        this.state.presenceRef.off();
+        this.state.connectedRef.off();
+    }
+
     addListner = currentUserUid => {
         let loadedUsers = [];
         this.state.usersRef.on('child_added', snap => {
