@@ -6,6 +6,7 @@ import MessagesHeader from './MessagesHeader';
 import MessageForm from './MessageForm';
 import Message from './Message';
 import Typing from './Typing';
+import Skeleton  from './Skeleton';
 
 import firebase from '../../firebase';
 
@@ -234,9 +235,18 @@ class Messages extends React.Component {
         ))
     )
 
+    displayMessageSkeleton = loading => (
+        loading ? (
+            <React.Fragment>
+                {[...Array(10)].map((_, i) => (
+                    <Skeleton key={i} />
+                ))}
+            </React.Fragment>
+        ) : null)
+
     render() {
         const { messagesRef, messages, channel, user, progressBar, numUniqueUsers, searchTerm, 
-            searchResults, searchLoading, privateChannel, isChannelStarred, typingUsers } = this.state;
+            searchResults, searchLoading, privateChannel, isChannelStarred, typingUsers, messagesLoading } = this.state;
         return(
             <React.Fragment>
                 <MessagesHeader 
@@ -251,6 +261,7 @@ class Messages extends React.Component {
 
                 <Segment>
                     <Comment.Group className={progressBar ? "messages__progress" : "messages"}>
+                        {this.displayMessageSkeleton(messagesLoading)}
                         { searchTerm ? this.displayMessages(searchResults) : this.displayMessages(messages) }
                         {this.displayTypingUsers(typingUsers)}
                         <div ref={node => (this.messagesEnd = node)}></div>
